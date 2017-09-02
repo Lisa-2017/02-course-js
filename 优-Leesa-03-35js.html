@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>2个问题--第三节课已经解决</title>	
+		<title>评论留言（带头像）</title>	
 		<!--
 			//问题1：当变量获取输入框的classnamed时候，在div里面输入中文后，下面添加的li里面显示的是undefined；	当变量获取输入框的ID时就正常；因为class是个集合，不论里面有多少个class哪怕只有1个，也仍然是集合。所以应该写成oBox[0]这种集合的形式。
-			//问题2：即便使用id能够做出效果后，输入框内容提交后怎么将原始输入内容清空呢；	
+			//问题2：即便使用id能够做出效果后，输入框内容提交后怎么将原始输入内容清空呢；	oBox[0].innerHTML = '';		
 			-->
 	</head>
 	<style>
@@ -15,6 +15,7 @@
 		.fr{float: right;}
 		.clearfix{content:''; display: block;clear: both;}
 		.wrap{width: 1024px; margin: 50px auto;}
+		.wrap img{margin:0 15px 20px 0;border-radius: 50%; vertical-align: middle;}
 		.wrap .box1{height: 200px; border: 1px solid #ccc;border-radius: 10px;}
 		.wrap .box2{padding-top: 30px; height: 90px; border-bottom: 1px solid #ccc;}
 		.wrap .box2 #btn{width: 200px; height: 60px; background:linear-gradient( #ccc, #333);color: #FFFFFF; font-size: 24px;} 
@@ -23,10 +24,13 @@
 	</style>
 	<body>
 		<div class="wrap">
+			<div class="box" id="box">
+				<img src="images/1.jpg" alt="" width="80" /><label>文萌新</label>
+			</div>
+			
 			<div class="box1" id="box1" contenteditable="true"></div>
-			<div class="box2 clearfix">
-				<img src="images/1.jpg" alt="" width="80" class="fl" />
-				<input type="button" value="提交" class="fr" id="btn"/>
+			<div class="box2 clearfix">				
+				<input type="button" value="评论" class="fr" id="btn"/>
 			</div>
 			<ul></ul>
 		</div>
@@ -36,6 +40,7 @@
 //		var oBox = document.getElementById('box1')					//获取输入框的id，对应id方法
 		var oBox = document.getElementsByClassName('box1');			//获取输入框的classname,对应class方法。此时下面对应的oBox应该是个集合（几面叫这个类名的元素只有一个。）
 		var oUl = document.getElementsByTagName('ul')[0];
+//		var oName = document.getElementsByClassName('box';)
 //		console.log(oUl)
 		oBtn.onclick = function(){
 			
@@ -46,7 +51,7 @@
 //			oBox.innerHTML = '';								//当内容提交后，输入框的变量赋值为空。
 
 //			当获取class时操作下面（class方法）
-			var li = '<li>'+oBox[0].innerHTML+'</li>';
+			var li ='<li>'+oBox[0].innerHTML+'</li>';
 			oUl.innerHTML += li;
 //			也可以写成 oUl.innerHTML += '<li>'+oBox[0].innerHTML+'</li>';
 			oBox[0].innerHTML = '';								//当内容提交后，输入框的变量赋值为空。
